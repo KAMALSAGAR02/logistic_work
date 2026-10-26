@@ -1,6 +1,6 @@
 """
 Meridian Retail Logistics (MRL) - 8-Step Cleaning & Preprocessing Pipeline
-Reproduces the complete Week 2 cleaning pipeline, transforming 5,075 raw records into
+Production data quality pipeline transforming 5,075 raw records into
 5,000 model-ready records across 35 features.
 """
 
@@ -129,7 +129,7 @@ def run_cleaning_pipeline(raw_path="data/raw_logistics_sample.csv",
         
     print(f"Step 8 - Normalized and standardized numeric features")
     
-    # Sort chronologically as in Week 4 Section 2.1
+    # Sort chronologically for time-series and held-out validation
     df = df.sort_values("order_date").reset_index(drop=True)
     
     df.to_csv(output_path, index=False)

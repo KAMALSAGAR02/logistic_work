@@ -1,7 +1,7 @@
 """
 Meridian Retail Logistics (MRL) - Operations & Analytics Control Tower
-A comprehensive, interactive web dashboard synthesizing all 4 weeks of logistics analytics,
-data quality pipelines, predictive machine learning models, and prescriptive optimization engines.
+A comprehensive, enterprise logistics analytics dashboard synthesizing data quality governance,
+network performance diagnostics, predictive machine learning models, and prescriptive optimization engines.
 """
 
 import os
@@ -160,11 +160,11 @@ st.markdown("""
     <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
         <div>
             <h1>Meridian Retail Logistics (MRL)</h1>
-            <p>End-to-End Logistics Analytics & Operations Optimization Control Tower • Weeks 1 to 4</p>
+            <p>End-to-End Enterprise Logistics Analytics & Operations Optimization Control Tower</p>
         </div>
         <div style="text-align: right; margin-top: 0.5rem;">
             <span class="badge badge-green" style="font-size: 0.85rem; padding: 0.35rem 0.8rem;">● Live Model Serving</span>
-            <span class="badge badge-blue" style="font-size: 0.85rem; padding: 0.35rem 0.8rem; margin-left: 0.4rem;">5,000 Orders Tracked</span>
+            <span class="badge badge-blue" style="font-size: 0.85rem; padding: 0.35rem 0.8rem; margin-left: 0.4rem;">5,000 Orders Monitored</span>
         </div>
     </div>
 </div>
@@ -217,18 +217,18 @@ if selected_cat != "All Categories":
 # 4. Multi-Tab Navigation
 tabs = st.tabs([
     "🏢 Executive Overview & KPIs",
-    "🧹 Data Pipeline & Quality",
-    "📊 Visual Analytics & EDA",
-    "🤖 Predictive ML Hub",
-    "⚡ Prescriptive Optimization",
-    "📚 Synthesis & Methodology"
+    "🧹 Data Pipeline & Governance",
+    "📊 Network Diagnostics & Analytics",
+    "🤖 Predictive Freight Intelligence",
+    "⚡ Prescriptive Operations",
+    "📚 System Architecture & Docs"
 ])
 
 # ==============================================================================
-# TAB 1: EXECUTIVE OVERVIEW & WEEK 1 STRATEGIC KPIS
+# TAB 1: EXECUTIVE OVERVIEW & STRATEGIC KPIS
 # ==============================================================================
 with tabs[0]:
-    st.markdown("### 📈 Strategic Scorecard & Logistics KPIs (Week 1)")
+    st.markdown("### 📈 Strategic Scorecard & Logistics KPIs")
     
     # KPI Top Row
     delivered_filtered = filtered_df[filtered_df["delivery_delay_days"].notna()]
@@ -299,38 +299,38 @@ with tabs[0]:
     with c2:
         st.markdown("""
         <div class="card-box">
-            <div class="card-title">🎯 4-Week Strategic Deliverables</div>
+            <div class="card-title">🎯 Integrated Logistics Intelligence Architecture</div>
             <div style="line-height: 1.8;">
-                <span class="badge badge-blue">Week 1</span> <b>Strategic Planning:</b> Scenario, 6 core KPIs, baseline gap analysis.<br>
-                <span class="badge badge-green">Week 2</span> <b>Data Cleaning:</b> 8-step pipeline, 5,075 raw → 5,000 clean (35 features).<br>
-                <span class="badge badge-amber">Week 3</span> <b>Visual Diagnostics:</b> 8 EDA visualizations, systemic delay proof.<br>
-                <span class="badge badge-blue">Week 4</span> <b>Prescriptive ML & Optimization:</b> Freight audit, mode reassignment, SLA calibration, routing.
+                <span class="badge badge-blue">Layer 1</span> <b>Strategic Planning:</b> Scenario modeling, 6 core KPIs, baseline gap analysis.<br>
+                <span class="badge badge-green">Layer 2</span> <b>Data Governance:</b> 8-step pipeline, 5,075 raw → 5,000 clean (35 features).<br>
+                <span class="badge badge-amber">Layer 3</span> <b>Diagnostic Analytics:</b> Purpose-built visualizations, systemic delay diagnosis.<br>
+                <span class="badge badge-blue">Layer 4</span> <b>Prescriptive Optimization:</b> Freight audit, mode reassignment, SLA calibration, routing.
             </div>
         </div>
         """, unsafe_allow_html=True)
         
-    # Weekly Order Volume by DC Chart
+    # Longitudinal Order Volume by DC Chart
     df_vol = df.copy()
-    df_vol["order_week"] = df_vol["order_date"].dt.to_period("W").dt.to_timestamp()
-    weekly_dc = df_vol.groupby(["order_week", "dc_id"]).size().reset_index(name="orders")
+    df_vol["order_period"] = df_vol["order_date"].dt.to_period("W").dt.to_timestamp()
+    weekly_dc = df_vol.groupby(["order_period", "dc_id"]).size().reset_index(name="orders")
     
     fig_vol = px.area(
         weekly_dc,
-        x="order_week",
+        x="order_period",
         y="orders",
         color="dc_id",
-        title="Weekly Order Fulfillment Volume across Distribution Centers (92-Week Horizon)",
+        title="Fulfillment Order Volume Trajectory across Distribution Centers",
         color_discrete_sequence=["#0284c7", "#0d9488", "#6366f1"],
-        labels={"order_week": "Order Date", "orders": "Orders per Week", "dc_id": "Distribution Center"}
+        labels={"order_period": "Fulfillment Period", "orders": "Orders per Period", "dc_id": "Distribution Center"}
     )
     fig_vol.update_layout(template="plotly_white", height=340, margin=dict(l=20, r=20, t=40, b=20))
     st.plotly_chart(fig_vol, use_container_width=True)
 
 # ==============================================================================
-# TAB 2: DATA PIPELINE & QUALITY HEALTH (WEEK 2)
+# TAB 2: DATA PIPELINE & QUALITY HEALTH
 # ==============================================================================
 with tabs[1]:
-    st.markdown("### 🧹 Data Collection, Cleaning & Preprocessing Health (Week 2)")
+    st.markdown("### 🧹 Data Collection, Cleaning & Preprocessing Health")
     
     # Pipeline Step Metric Cards
     s1, s2, s3, s4 = st.columns(4)
@@ -341,7 +341,7 @@ with tabs[1]:
     with s3:
         st.metric("Invalid Records Corrected", "113", delta="60 Qty + 53 Date Flips")
     with s4:
-        st.metric("Missing Values Resolved", "625", delta="Unit Price, Segment, Dates")
+        st.metric("Missing Data Resolved", "625", delta="Unit Price, Segment, Dates")
         
     st.markdown("<br>", unsafe_allow_html=True)
     
@@ -410,11 +410,11 @@ with tabs[1]:
         )
 
 # ==============================================================================
-# TAB 3: VISUAL ANALYTICS & DIAGNOSTICS (WEEK 3)
+# TAB 3: VISUAL ANALYTICS & DIAGNOSTICS
 # ==============================================================================
 with tabs[2]:
-    st.markdown("### 📊 Advanced Exploratory Data Analysis & Diagnostics (Week 3)")
-    st.caption("Eight purpose-built diagnostic visualizations analyzing delivery delays, cost drivers, and segment variations.")
+    st.markdown("### 📊 Advanced Exploratory Data Analysis & Diagnostics")
+    st.caption("Diagnostic visualizations analyzing delivery delays, cost drivers, and operational segment variations.")
     
     # Row 1: Delay Distribution & Cost by Mode Boxplot
     r1_col1, r1_col2 = st.columns(2)
@@ -424,7 +424,7 @@ with tabs[2]:
             delivered_filtered,
             x="delivery_delay_days",
             nbins=25,
-            title="Figure 1: Delivery Delay Distribution (Delivered Orders)",
+            title="Delivery Delay Distribution (Delivered Orders)",
             color_discrete_sequence=["#0284c7"],
             labels={"delivery_delay_days": "Delivery Delay (Days, 0 = On Time)"}
         )
@@ -441,7 +441,7 @@ with tabs[2]:
             y="shipping_cost_capped",
             category_orders={"shipping_mode": mode_order},
             color="shipping_mode",
-            title="Figure 2: Shipping Cost Distribution across Modes (Capped $)",
+            title="Shipping Cost Distribution across Modes (Capped $)",
             color_discrete_sequence=["#94a3b8", "#38bdf8", "#0284c7", "#0369a1"]
         )
         fig_box.update_layout(template="plotly_white", height=320, showlegend=False, margin=dict(l=20, r=20, t=40, b=20))
@@ -459,7 +459,7 @@ with tabs[2]:
             otd_mode,
             x="shipping_mode",
             y="otd",
-            title="Figure 3: On-Time Delivery Rate by Shipping Mode vs Target",
+            title="On-Time Delivery Rate by Shipping Mode vs Target",
             color="otd",
             color_continuous_scale="Teal",
             text_auto=".1f",
@@ -479,7 +479,7 @@ with tabs[2]:
             otd_dc,
             x="dc_id",
             y="otd",
-            title="Figure 4: On-Time Delivery Rate across Distribution Centers",
+            title="On-Time Delivery Rate across Distribution Centers",
             color="otd",
             color_continuous_scale="Blues",
             text_auto=".1f",
@@ -498,7 +498,7 @@ with tabs[2]:
         fig_corr = px.imshow(
             corr_matrix,
             text_auto=True,
-            title="Figure 5: Correlation Matrix Heatmap of Core Numeric Variables",
+            title="Correlation Matrix Heatmap of Core Operational Variables",
             color_continuous_scale="Blues",
             labels=dict(color="Correlation")
         )
@@ -513,7 +513,7 @@ with tabs[2]:
             y="shipping_cost_capped",
             color="shipping_mode",
             category_orders={"shipping_mode": mode_order},
-            title="Figure 6: Shipping Cost vs. Parcel Weight (Colored by Mode)",
+            title="Shipping Cost vs. Parcel Weight (Colored by Mode)",
             opacity=0.65,
             color_discrete_sequence=["#64748b", "#0284c7", "#f59e0b", "#ef4444"],
             labels={"order_weight_kg_capped": "Parcel Weight (kg)", "shipping_cost_capped": "Cost ($)"}
@@ -521,28 +521,28 @@ with tabs[2]:
         fig_scatter.update_layout(template="plotly_white", height=340, margin=dict(l=20, r=20, t=40, b=20))
         st.plotly_chart(fig_scatter, use_container_width=True)
         
-    # Row 4: 92-Week Longitudinal Trend & Pareto Concentration
+    # Row 4: Longitudinal Trend & Pareto Concentration
     r4_col1, r4_col2 = st.columns(2)
     with r4_col1:
-        # 7. Weekly volume vs delay
+        # 7. Longitudinal volume vs delay
         df_time = delivered_filtered.copy()
-        df_time["week"] = df_time["order_date"].dt.to_period("W").dt.to_timestamp()
-        weekly_stats = df_time.groupby("week").agg(
+        df_time["period"] = df_time["order_date"].dt.to_period("W").dt.to_timestamp()
+        longitudinal_stats = df_time.groupby("period").agg(
             volume=("order_id", "count"),
             avg_delay=("delivery_delay_days", "mean")
         ).reset_index()
         
         fig_trend = make_subplots(specs=[[{"secondary_y": True}]])
         fig_trend.add_trace(
-            go.Bar(x=weekly_stats["week"], y=weekly_stats["volume"], name="Weekly Orders", marker_color="#cbd5e1"),
+            go.Bar(x=longitudinal_stats["period"], y=longitudinal_stats["volume"], name="Order Volume", marker_color="#cbd5e1"),
             secondary_y=False
         )
         fig_trend.add_trace(
-            go.Scatter(x=weekly_stats["week"], y=weekly_stats["avg_delay"], name="Avg Delay (Days)", line=dict(color="#0284c7", width=2)),
+            go.Scatter(x=longitudinal_stats["period"], y=longitudinal_stats["avg_delay"], name="Avg Delay (Days)", line=dict(color="#0284c7", width=2)),
             secondary_y=True
         )
         fig_trend.update_layout(
-            title="Figure 7: Longitudinal Order Volume vs. Average Delay (92 Weeks)",
+            title="Longitudinal Order Volume vs. Average Delivery Delay",
             template="plotly_white",
             height=320,
             margin=dict(l=20, r=20, t=40, b=20),
@@ -565,7 +565,7 @@ with tabs[2]:
             secondary_y=True
         )
         fig_pareto.update_layout(
-            title="Figure 8: Category Revenue Concentration (Pareto Chart)",
+            title="Category Revenue Concentration (Pareto Analysis)",
             template="plotly_white",
             height=320,
             margin=dict(l=20, r=20, t=40, b=20),
@@ -574,10 +574,10 @@ with tabs[2]:
         st.plotly_chart(fig_pareto, use_container_width=True)
 
 # ==============================================================================
-# TAB 4: PREDICTIVE MACHINE LEARNING HUB (WEEK 4)
+# TAB 4: PREDICTIVE MACHINE LEARNING HUB
 # ==============================================================================
 with tabs[3]:
-    st.markdown("### 🤖 Predictive Modeling Hub: Carrier Shipping Cost Estimation (Week 4)")
+    st.markdown("### 🤖 Predictive Modeling Hub: Carrier Shipping Cost Estimation")
     st.markdown("""
     Evaluating candidate regressors on the 4,000-order training set against the 1,000-order held-out test window.
     The champion model is trained with an absolute-error loss on the **log-transformed target** to insulate against carrier billing errors.
@@ -659,10 +659,10 @@ with tabs[3]:
         st.plotly_chart(fig_mode_comp, use_container_width=True)
 
 # ==============================================================================
-# TAB 5: PRESCRIPTIVE OPTIMIZATION LEVERS (WEEK 4)
+# TAB 5: PRESCRIPTIVE OPTIMIZATION LEVERS
 # ==============================================================================
 with tabs[4]:
-    st.markdown("### ⚡ Operational Optimization Levers (Week 4)")
+    st.markdown("### ⚡ Operational Optimization Levers")
     st.caption("Translating predictive model outputs into actionable supply chain improvements.")
     
     opt_tab1, opt_tab2, opt_tab3, opt_tab4 = st.tabs([
@@ -763,7 +763,7 @@ with tabs[4]:
         pc1, pc2 = st.columns([1, 1])
         with pc1:
             st.dataframe(calib_df, use_container_width=True)
-        with pc2:
+        with rc2:
             fig_calib = px.line(
                 calib_df,
                 x="Buffer Days",
@@ -780,7 +780,7 @@ with tabs[4]:
     # LEVER 4: ROUTE OPTIMIZATION
     # --------------------------------------------------------------------------
     with opt_tab4:
-        st.markdown("#### Lever 5: Vehicle Route Optimization (Clarke-Wright Savings Heuristic)")
+        st.markdown("#### Lever 4: Vehicle Route Optimization (Clarke-Wright Savings Heuristic)")
         st.markdown("""
         Comparing standard dispatcher sweep against **Clarke-Wright savings heuristic with 2-opt search** on 40 delivery stops.
         """)
@@ -846,10 +846,10 @@ with tabs[5]:
     
     st.markdown("""
     <div class="card-box">
-        <div class="card-title">📖 Critical Analytical Corrections & Lessons Learned (Week 4)</div>
+        <div class="card-title">📖 Critical Analytical Corrections & Operational Insights</div>
         <ol style="line-height: 1.8; color: #334155;">
-            <li><b>The Outlier Capping Distortion:</b> In Week 2, shipping cost was capped at $86.43. While capping protected simple models from exploding, it compressed legitimate heavy express parcels and understated the Same Day premium by 80 points. Using robust loss on log-scale resolved this without discarding data.</li>
-            <li><b>Systemic Delivery Delays:</b> Week 3 chi-square tests confirmed that lateness is uniform across DCs, shipping modes, categories, and customer regions. Demand volume spikes do not cause delivery delays (r = -0.02). The solution is SLA buffer calibration (+3 days lifts on-time to 92.6%).</li>
+            <li><b>The Outlier Capping Distortion:</b> In initial data preprocessing, shipping cost was capped at $86.43 using traditional IQR fences. While capping protected simple models from exploding, it compressed legitimate heavy express parcels and understated the Same Day premium by 80 points. Using robust absolute-error loss on the log-scale (TransformedTargetRegressor) resolved this properly without discarding data.</li>
+            <li><b>Systemic Delivery Delays:</b> Chi-square hypothesis tests confirmed that lateness is uniform across distribution centers, shipping modes, categories, and customer regions. Demand volume fluctuations do not cause delivery delays (r = -0.02). The solution is SLA buffer calibration (+3 days lifts on-time to 92.6%).</li>
             <li><b>Freight Bill Auditing:</b> Standard IQR rules generated 44 false alarms. The robust ML residual detector (k=4) achieved 100% recall with 0 false alarms on simulated test invoices, recovering $6,900 to $11,000 per 1,000 orders.</li>
         </ol>
     </div>
@@ -862,7 +862,7 @@ with tabs[5]:
     # 1. Initialize Git Repository
     git init
     git add .
-    git commit -m "feat: complete 4-week logistics analytics dashboard & optimization suite"
+    git commit -m "feat: complete end-to-end logistics analytics control tower & optimization suite"
 
     # 2. Push to GitHub
     git remote add origin https://github.com/YOUR_USERNAME/meridian-logistics-dashboard.git

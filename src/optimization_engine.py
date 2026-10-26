@@ -1,6 +1,6 @@
 """
 Meridian Retail Logistics (MRL) - Operational Optimization Engine
-Implements the 5 core optimization levers from Week 4:
+Implements the core prescriptive optimization levers:
 1. Freight-bill anomaly audit
 2. Shipping-mode reassignment counterfactuals
 3. SLA promise-date calibration

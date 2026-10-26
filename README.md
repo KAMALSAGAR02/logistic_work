@@ -7,7 +7,7 @@
 [![GitHub Pages Ready](https://img.shields.io/badge/GitHub%20Pages-Live%20Demo-success)](docs/index.html)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-An enterprise-grade, interactive analytics dashboard and decision support system synthesizing the complete 4-week logistics data science progression for **Meridian Retail Logistics (MRL)**.
+An enterprise-grade, interactive analytics dashboard and decision support system for **Meridian Retail Logistics (MRL)**.
 
 This repository features both a **native Python Streamlit Web Application** with live machine learning inference and an **independent zero-dependency standalone HTML/JS dashboard** ready for instant hosting on **GitHub Pages**.
 
@@ -24,9 +24,9 @@ Meridian Retail Logistics (MRL) manages a regional retail distribution network a
 
 ---
 
-## 🚀 Key Project Achievements & Results
+## 🚀 Key Results & Measured Impact
 
-| Objective | Baseline Performance | Optimized Prescriptive Solution | Measurable Business Impact |
+| Strategic Capability | Baseline Performance | Optimized Prescriptive Solution | Measurable Business Impact |
 | :--- | :--- | :--- | :--- |
 | **Carrier Freight Cost Modeling** | Naive baseline MAE: **$17.68** | **Gradient Boosting Champion** (Log-wrapped, Absolute Loss) | **MAE $2.33 – $3.46**, $R^2 = 0.941 – 0.972$, MdAPE **6.9%** |
 | **Freight Invoice Audit** | Crude IQR Rule: Precision **37.1%** (44 false alarms) | **Model Residual Auditor** ($k = 4.0$ threshold) | **100% Error Recall** (28/28 caught, 0 false alarms), **$6,900 – $11,000** recovered |
@@ -40,22 +40,22 @@ Meridian Retail Logistics (MRL) manages a regional retail distribution network a
 
 ```mermaid
 flowchart TD
-    subgraph Ingestion ["1. Data Ingestion & Cleaning (Week 2)"]
+    subgraph Ingestion ["1. Data Ingestion & Quality Governance"]
         Raw["Raw Operational Extract<br>5,075 rows × 18 columns"] --> Pipe["8-Step Cleaning Pipeline<br>• Deduplication (75 rows dropped)<br>• Sign Correction (60 neg qty)<br>• Imputation (Prices, Dates, Segments)<br>• IQR Capping ($86.43 cost, 31.55kg weight)"]
         Pipe --> Clean["Cleaned Logistics Sample<br>5,000 rows × 35 columns"]
     end
 
-    subgraph Diagnostics ["2. Diagnostic Analytics (Week 3)"]
-        Clean --> EDA["8 Purpose-Built Plotly Visualizations<br>• Delay Distribution & Tail Analysis<br>• Mode Cost Distribution Boxplots<br>• DC & Mode OTD vs 95% SLA Target<br>• 6×6 Correlation Matrix Heatmap<br>• Longitudinal 92-Week Trends<br>• Category Revenue Pareto Curve"]
+    subgraph Diagnostics ["2. Network Diagnostic Analytics"]
+        Clean --> EDA["Purpose-Built Plotly Visualizations<br>• Delay Distribution & Tail Analysis<br>• Mode Cost Distribution Boxplots<br>• DC & Mode OTD vs 95% SLA Target<br>• 6×6 Correlation Matrix Heatmap<br>• Longitudinal Trends<br>• Category Revenue Pareto Curve"]
     end
 
-    subgraph Modeling ["3. Predictive ML Hub (Week 4)"]
+    subgraph Modeling ["3. Predictive Freight Cost Intelligence"]
         Clean --> Split["Chronological Split (80/20)<br>4,000 Train / 1,000 Test"]
         Split --> ML["Candidate Regressors Comparison<br>OLS Linear • Robust Huber • Decision Tree<br>Random Forest • Gradient Boosting Champion"]
         ML --> Quoter["Interactive What-If Cost Quoter<br>Real-time rate inference & confidence intervals"]
     end
 
-    subgraph Optimization ["4. Prescriptive Levers (Week 4)"]
+    subgraph Optimization ["4. Prescriptive Optimization Levers"]
         ML --> L1["Lever 1: Freight-Bill Auditor (k=4)"]
         ML --> L2["Lever 2: Mode Downgrade Simulator"]
         EDA --> L3["Lever 3: Promise-Date Calibrator"]
@@ -63,7 +63,7 @@ flowchart TD
         Clean --> L5["Lever 5: Clarke-Wright Route Optimizer"]
     end
 
-    subgraph Interfaces ["5. Delivery Formats"]
+    subgraph Interfaces ["5. User Interfaces"]
         Quoter --> App["Streamlit Enterprise Web App (app.py)"]
         L1 & L2 & L3 & L4 & L5 --> App
         App --> Static["Zero-Dependency GitHub Pages Dashboard (docs/index.html)"]
@@ -144,7 +144,8 @@ meridian-logistics-dashboard/
    - In your GitHub repository, navigate to **Settings** → **Pages**.
    - Under **Build and deployment**, select **Source:** `Deploy from a branch`.
    - Select branch: `main` and folder: `/docs`.
-   - Click **Save**. Your dashboard will be live at `https://YOUR_USERNAME.github.io/meridian-logistics-dashboard/`!
+   - Click **Save**.
+   - Your interactive dashboard will be publicly accessible at `https://YOUR_USERNAME.github.io/meridian-logistics-dashboard/`!
 
 ---
 
@@ -167,26 +168,26 @@ tests/test_pipeline.py::test_route_optimization PASSED
 
 ---
 
-## 📊 Summary of Weekly Deliverables
+## 📊 Core Functional Modules
 
-### Week 1: Strategic Planning & KPIs
+### 1. Strategic Planning & KPI Governance
 - Defined operating context for Meridian Retail Logistics (3 DCs, 4 modes, 4 regions, 5 categories).
 - Established 6 core supply chain KPIs: On-Time Delivery Rate ($\ge 95\%$), Avg Last-Mile Cost, Delivery Delay, Inventory Turnover, Freight Billing Accuracy, and SLA Adherence.
 
-### Week 2: Data Collection & Cleaning Pipeline
+### 2. Data Ingestion & Quality Governance Pipeline
 - Processed 5,075 raw records into 5,000 clean records.
 - Solved exact duplicates (74) and soft duplicates (1).
 - Corrected 60 negative quantities and 53 impossible delivery dates.
 - Resolved missing prices via SKU-median and delivery status (57 in-transit, 222 imputed).
 - Capped extreme outliers using IQR fences ($86.43 for cost, 31.55 kg for weight).
 
-### Week 3: Exploratory Visual Diagnostics
-- Constructed 8 diagnostic visualizations analyzing delivery delays, cost drivers, and segment variations.
+### 3. Diagnostic Network Analytics
+- Constructed diagnostic visualizations analyzing delivery delays, cost drivers, and segment variations.
 - Discovered that on-time delivery (57.4% – 59.2%) is remarkably uniform across all DCs and modes, proving lateness is a **network-wide systemic gap**.
 - Found that order volume surges do not drive delivery delays ($r = -0.02$).
 - Identified category concentration risk: Electronics generates 49.0% of revenue from 21.5% of orders, while holding the lowest on-time rate (57.1%).
 
-### Week 4: Predictive Modeling & Prescriptive Optimization
+### 4. Predictive Modeling & Prescriptive Optimization
 - Evaluated 6 candidate machine learning models on a strict chronological 80/20 train/test split.
 - Champion **Gradient Boosting Regressor** achieved held-out MAE of $2.33 – $3.46 and $R^2 = 0.941 – 0.972$.
 - Built an automated **Freight-Bill Anomaly Auditor** catching 100% of mis-keyed invoices (28/28) with 0 false alarms, recovering over $6,900 – $11,000 per 1,000 shipments.

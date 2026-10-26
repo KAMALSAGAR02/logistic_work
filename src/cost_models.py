@@ -39,7 +39,7 @@ def evaluate_models(data_path="data/cleaned_logistics_sample.csv",
     split = 4000
     train, test = df.iloc[:split].copy(), df.iloc[split:].copy()
     
-    # Features available at order time (Week 4 Section 1.2)
+    # Features available at order time
     NUM = ["order_weight_kg_capped", "quantity", "discount_pct"]
     CAT = ["shipping_mode", "product_category"]
     
