@@ -220,8 +220,7 @@ tabs = st.tabs([
     "🧹 Data Pipeline & Governance",
     "📊 Network Diagnostics & Analytics",
     "🤖 Predictive Freight Intelligence",
-    "⚡ Prescriptive Operations",
-    "📚 System Architecture & Docs"
+    "⚡ Prescriptive Operations"
 ])
 
 # ==============================================================================
@@ -838,44 +837,4 @@ with tabs[4]:
         )
         st.plotly_chart(fig_route, use_container_width=True)
 
-# ==============================================================================
-# TAB 6: SYNTHESIS, METHODOLOGY & GITHUB REPO
-# ==============================================================================
-with tabs[5]:
-    st.markdown("### 📚 Methodological Synthesis & Project Deliverables")
-    
-    st.markdown("""
-    <div class="card-box">
-        <div class="card-title">📖 Critical Analytical Corrections & Operational Insights</div>
-        <ol style="line-height: 1.8; color: #334155;">
-            <li><b>The Outlier Capping Distortion:</b> In initial data preprocessing, shipping cost was capped at $86.43 using traditional IQR fences. While capping protected simple models from exploding, it compressed legitimate heavy express parcels and understated the Same Day premium by 80 points. Using robust absolute-error loss on the log-scale (TransformedTargetRegressor) resolved this properly without discarding data.</li>
-            <li><b>Systemic Delivery Delays:</b> Chi-square hypothesis tests confirmed that lateness is uniform across distribution centers, shipping modes, categories, and customer regions. Demand volume fluctuations do not cause delivery delays (r = -0.02). The solution is SLA buffer calibration (+3 days lifts on-time to 92.6%).</li>
-            <li><b>Freight Bill Auditing:</b> Standard IQR rules generated 44 false alarms. The robust ML residual detector (k=4) achieved 100% recall with 0 false alarms on simulated test invoices, recovering $6,900 to $11,000 per 1,000 orders.</li>
-        </ol>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    st.markdown("#### 🚀 GitHub Repository Deployment Guide")
-    st.markdown("""
-    This project is packaged for zero-friction deployment to GitHub and GitHub Pages:
-    ```bash
-    # 1. Initialize Git Repository
-    git init
-    git add .
-    git commit -m "feat: complete end-to-end logistics analytics control tower & optimization suite"
 
-    # 2. Push to GitHub
-    git remote add origin https://github.com/YOUR_USERNAME/meridian-logistics-dashboard.git
-    git branch -M main
-    git push -u origin main
-    ```
-    
-    **To Run the Streamlit Dashboard Locally:**
-    ```bash
-    pip install -r requirements.txt
-    streamlit run app.py
-    ```
-    
-    **Live Browser Demo without Python (GitHub Pages):**
-    Open `docs/index.html` in any browser, or enable **Settings → Pages** in your GitHub repository to deploy it automatically to `https://YOUR_USERNAME.github.io/meridian-logistics-dashboard/`.
-    """)

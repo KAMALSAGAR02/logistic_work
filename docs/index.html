@@ -59,9 +59,6 @@
       <button onclick="switchTab('opt')" id="tab-opt" class="tab-btn py-4 px-1 text-slate-600 hover:text-sky-600 transition whitespace-nowrap flex items-center gap-2">
         <i data-lucide="zap" class="w-4 h-4"></i> Prescriptive Optimization
       </button>
-      <button onclick="switchTab('github')" id="tab-github" class="tab-btn py-4 px-1 text-slate-600 hover:text-sky-600 transition whitespace-nowrap flex items-center gap-2">
-        <i data-lucide="git-branch" class="w-4 h-4"></i> System Architecture & Docs
-      </button>
     </div>
   </nav>
 
@@ -488,47 +485,6 @@
           </div>
         </div>
         <div id="chart-opt-route" style="height: 380px;"></div>
-      </div>
-    </div>
-
-    <!-- ======================================================================= -->
-    <!-- TAB 6: GITHUB REPO & METHODOLOGY -->
-    <!-- ======================================================================= -->
-    <div id="content-github" class="tab-content hidden space-y-6">
-      <div class="card p-6">
-        <h3 class="text-base font-bold text-slate-900 mb-3 flex items-center gap-2">
-          <i data-lucide="book-open" class="w-5 h-5 text-sky-600"></i> Analytical Synthesis & Methodological Insights
-        </h3>
-        <div class="space-y-3 text-xs text-slate-700 leading-relaxed">
-          <div class="p-3 bg-slate-50 rounded border">
-            <b>1. Outlier Capping Distortion:</b> In initial data preprocessing, shipping cost was capped at $86.43 using standard IQR fences. Predictive modeling revealed that capping compressed heavy express parcels, understating the express mode premium by 80 points. Using robust absolute-error loss on the log-scale (TransformedTargetRegressor) solved this properly without truncating legitimate customer orders.
-          </div>
-          <div class="p-3 bg-slate-50 rounded border">
-            <b>2. Systemic vs. Local Delivery Delays:</b> Chi-square test of lateness against distribution centers yielded p = 0.899; against shipping modes p = 0.447. Delivery delays are not concentrated in a rogue DC or carrier mode, but are company-wide. Calibrating promise dates (+3 days buffer) lifts OTD from 57.4% to 92.6%.
-          </div>
-          <div class="p-3 bg-slate-50 rounded border">
-            <b>3. Freight-Bill Auditing:</b> Simple IQR outlier detection flagged 70 orders with 44 false alarms (precision 37.1%). The model residual detector (k = 4) achieved 100% recall with 0 false alarms, saving tens of thousands in overpayment with minimal manual review.
-          </div>
-        </div>
-      </div>
-
-      <div class="card p-6">
-        <h3 class="text-base font-bold text-slate-900 mb-3 flex items-center gap-2">
-          <i data-lucide="github" class="w-5 h-5 text-slate-900"></i> GitHub Repository Structure & Quick Start
-        </h3>
-        <pre class="bg-slate-900 text-slate-100 p-4 rounded-lg text-xs overflow-x-auto leading-relaxed font-mono">
-# 1. Clone repository
-git clone https://github.com/YOUR_USERNAME/meridian-logistics-dashboard.git
-cd meridian-logistics-dashboard
-
-# 2. Install dependencies
-pip install -r requirements.txt
-
-# 3. Run interactive Streamlit dashboard
-streamlit run app.py
-
-# 4. Run test suite
-pytest tests/</pre>
       </div>
     </div>
 
